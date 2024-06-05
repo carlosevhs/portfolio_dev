@@ -1,0 +1,185 @@
+@use 'variaveis';
+@use 'hero';
+@use 'elenco';
+@use 'contato';
+@use 'footer';
+@use 'header';
+
+@font-face {
+    font-family: Avenir;
+    src: url(../../assets/fonts/Avenir-Regular.woff2);
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: Avenir;
+    src: url(../../assets/fonts/Avenir-Bold.woff2);
+    font-weight: 700;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Avenir, sans-serif;
+    list-style: none;
+}
+
+body {
+    background-color: variaveis.$corDeFundo;
+    letter-spacing: .2px;
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url(https://media.licdn.com/dms/image/D4D12AQGe9zSSawivqg/article-cover_image-shrink_720_1280/0/1696977879144?e=2147483647&v=beta&t=iugRVa8TzOgwheK4xkSZJBh1oPi-caz7W-riSl8P5OY);
+    background-size: cover;
+    background-position: center;
+
+    .container {
+        max-width: 1200px;
+        margin:auto
+
+    }
+}
+
+@mixin text($fontSize: 16px) {
+    font-size: $fontSize;
+    line-height: $fontSize + 10px;
+    color: variaveis.$textoPrincipal;
+}
+
+@mixin title ($fontSize: 40px) {
+    @include text($fontSize);
+    color: variaveis.$corTextoSecundario;
+}
+
+.text--big {
+    @include text(18px);
+
+    @media (max-width: 768px) {
+        @include text (15px);
+    }
+}
+
+.text {
+    @include text;
+
+    @media (max-width: 768px) {
+        @include text (14px);
+    }
+}
+
+.text--small {
+    @include text(12px);
+
+    @media (max-width: 768px) {
+        @include text (11px);
+    }
+}
+
+.link-text {
+    @include text(18px);
+    color: variaveis.$corTextoSecundario;
+    text-decoration: underline;
+}
+
+.title--big {
+    @include title(44px);
+
+    @media (max-width: 768px) {
+        @include title (26px);
+    }
+}
+
+.title {
+    @include title;
+
+    @media (max-width: 768px) {
+        @include title (24px);
+    }
+}
+
+.title--small {
+    @include title(28px);
+
+    @media (max-width: 768px) {
+        @include title (22px);
+    }
+}
+
+h2 {
+    margin: 16px auto;
+    text-align: center;
+}
+
+.button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 60px;
+    font-size: 18px;
+    color: variaveis.$corTextoSecundario;
+    background-color: variaveis.$corDeFundoBotaoPrimario;
+    text-transform: uppercase;
+    border-radius: 4px;
+    text-decoration: none;
+    padding: 8px 14px;
+    letter-spacing: 1px;
+    border: 1px solid variaveis.$corDeFundoBotaoPrimario;
+    &:hover {
+        background-color: lighten(variaveis.$corDeFundoBotaoPrimario, 3%);
+        transition: .2s ease;
+    }
+    cursor: pointer;
+
+    &--secondary {
+        background-color: variaveis.$corDeFundoBotaoSecondario;
+        border-color: variaveis.$corDeFundoBotaoSecondario;
+        &:hover {
+            background-color: lighten(variaveis.$corDeFundoBotaoSecondario, 3%);
+            transition: .2s ease;
+        }
+    }
+
+    &--dark {
+        background-color: variaveis.$corDeFundoBotaoDark;
+        border-color: variaveis.$corTextoSecundario;
+        &:hover {
+            background-color: variaveis.$corTextoSecundario ;
+            color: variaveis.$corDeFundo;
+            transition: .2s ease;
+        }
+    }
+}
+
+.about {
+    padding: 5.6vw;
+    display: block;
+    align-items: center;
+
+    h2 {
+        margin-bottom: 24px;
+    }
+    p{
+        font-size: 20px;
+        color: variaveis.$corTextoSecundario;
+    }
+    &__technology {
+        margin-top: 40px;
+
+        &__itens {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            &__item {
+                margin: 24px auto;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                
+                img {
+                    width: 50px;
+                    margin-bottom: 16px;
+                }
+            }
+        }
+    }
+
+}

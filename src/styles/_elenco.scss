@@ -1,0 +1,61 @@
+@use 'variaveis';
+
+.elenco {
+    padding-top: 100px;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    @media (max-width: 768px) {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+.grid-item {
+    background-color: rgb(51, 51, 51);
+    border-top-left-radius: 5%;
+    border-top-right-radius: 5%;
+
+    position: relative;
+    &:hover .overlay-img{
+        opacity: 1;
+    }
+
+    h4{
+        font-size: 20px;
+        margin: 10px 0 10px 20px;
+    }
+
+    .button {
+        margin-bottom: 16px;
+        margin-left: 10%;
+        width: 80%;
+        text-align: center;
+    }
+
+    img {
+        width: 100%;
+        height: auto;
+        border-radius: 5%;
+    }
+    .icon-technology {
+        width: 40px;
+        margin: 10px;
+    }
+}
+
+
+.overlay-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    transition: opacity 1s ease;
+}
+
+
